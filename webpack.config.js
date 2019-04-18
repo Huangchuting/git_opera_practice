@@ -33,8 +33,8 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-                exclude: /node_modules/
+                use: ['style-loader', 'css-loader']
+                // exclude: /node_modules/
             },
             { // 转换 es6 的高级语法
                 test: /\.js$/,
@@ -54,6 +54,10 @@ module.exports = {
             {
                 test: /\.(ttf|eot|svg|woff|woff2)$/,
                 loader: 'url-loader'
+            },
+            {
+                test: /\.(ttf|eot|svg|woff|woff2)$/,
+                loader: 'file-loader'
             }
         ]
     },
