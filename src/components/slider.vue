@@ -1,31 +1,32 @@
 <template>
-<div class="wrap" :class="[sliderClass]">
-    <div class="slider" ref="slider">
-        <div class="slider-group" :style="{'transform':`translateX(${translateX}px)`}" ref="sliderGroup">
-            <div 
-                class="slider-item " 
-                :class="{'slider-item-active': curIndex === index}" 
-                v-for="(item, index) in data" 
-                :key="index" 
-                @click="clickTab(index, item)"
-            >
-                {{item.name}}
+    <div class="wrap" :class="[sliderClass]">
+        <div class="slider" ref="slider">
+            <div class="slider-group" :style="{'transform':`translateX(${translateX}px)`}" ref="sliderGroup">
+                <div 
+                    class="slider-item " 
+                    :class="{'slider-item-active': curIndex === index}" 
+                    v-for="(item, index) in data" 
+                    :key="index" 
+                    @click="clickTab(index, item)"
+                >
+                    {{item.name}}
+                </div>
+                <div class="slider-bar" v-if="sliderBar" :style="{'transform':`translateX(${translateXBar}px)`, 'width': `${barWidth}px`}"></div>
             </div>
-            <div class="slider-bar" v-if="sliderBar" :style="{'transform':`translateX(${translateXBar}px)`, 'width': `${barWidth}px`}"></div>
+            
+        </div>
+        <div class="arrow-wrap">
+            <span class="arrow arrow-prev" :class="{'disabled': curIndex === 0}" @click="clickTabPrev">&lt;</span>
+            <span class="arrow arrow-next" :class="{'disabled': curIndex === data.length - 1}"  @click="clickTabNext">&gt;</span>
         </div>
         
     </div>
-    <div class="arrow-wrap">
-        <span class="arrow arrow-prev" :class="{'disabled': curIndex === 0}" @click="clickTabPrev">&lt;</span>
-        <span class="arrow arrow-next" :class="{'disabled': curIndex === data.length - 1}"  @click="clickTabNext">&gt;</span>
-    </div>
-    
-</div>
     
 </template>
 <script>
 
 export default {
+    name: 'slider',
     props: {
         sliderItems: {
             type: Array,

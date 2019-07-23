@@ -1,6 +1,12 @@
 <template>
-    <div id="app">
-        <div class="wrap">
+    <div id="app" class="vertical full">
+        <Header></Header>
+        <div class="flex">
+            <router-view></router-view>
+        </div>
+        
+        
+        <!-- <div class="wrap">
             <slider 
                 :sliderItems="sliderData1"
                 ref="slider1"
@@ -21,14 +27,14 @@
         </div>
         <div class="table-wrp">
             <my-table></my-table>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
-import api from './api/api.js'
-import slider from './components/slider'
-import chatRoom from './components/chatRoom'
-import myTable from './components/myTable'
+
+import Header from './main/header'
+// import chatRoom from './components/chatRoom'
+// import myTable from './components/myTable'
 export default {
     data () {
         return {
@@ -37,10 +43,11 @@ export default {
         }
     },
     components: {
-        slider, chatRoom, myTable
+        // chatRoom, myTable
+        Header
     },
     mounted () {
-        this.initTab()
+        // this.initTab()
     },
     methods: {
         initTab () {

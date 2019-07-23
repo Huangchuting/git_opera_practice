@@ -15,7 +15,7 @@ module.exports = {
     devServer: {
         open: true, // 自动打开浏览器
         contentBase: 'src', // 指定托管的根目录
-        port: 8080, // 设置启动时的运行端口
+        port: 8081, // 设置启动时的运行端口
         hot: true // 启用热更新 启用热更新第一步
     },
     resolve: {

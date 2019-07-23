@@ -1,38 +1,27 @@
 <template>
-
-        <el-table
+    <el-table
         class="my-table"
-      :data="tableData"
-      row-class-name="row-class"
+        :data="tableData"
+        row-class-name="row-class"
       >
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-      <el-table-column class-name="cell-class">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          >编辑</el-button>
+      <template v-for="(item,index) in tableFields" :index="index">
+          <el-table-column 
+            :key="item.prop" 
+            :prop="item.prop"
+            :label="item.label">
+        </el-table-column>
       </template>
+      <el-table-column class-name="cell-class">
     </el-table-column>
     </el-table>
 </template>
 <script>
 import API from '../api/api.js'
 export default {
+    name: 'myTable',
     data () {
         return {
+            tableFields: [],
             tableData: []
         }
     },
@@ -41,14 +30,18 @@ export default {
     },
     methods: {
         init () {
+            this.tableFields.length = 0
             this.tableData.length = 0
             API.getTableData().then(res => {
+                console.log(res)
                 if (res.data && res.data.length !== 0) {
                     res.data.forEach(item => {
                         this.tableData.push(item)
                     })
+                    res.fields.forEach(item => {
+                        this.tableFields.push(item)
+                    })
                 }
-
             }).catch(error => {
                 console.log(error)
             })
@@ -75,11 +68,6 @@ export default {
         overflow: auto;
         .row-class{
             position: relative;
-            .cell-class{
-                position: absolute;
-                right: 0;
-                top:0;
-            }
         }
     }
 }

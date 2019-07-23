@@ -55,6 +55,20 @@ let chatDataAdd = {
 Mock.mock(/(\/getChatAdd)/, 'post', chatDataAdd)
 
 let tableData = {
+    'fields': [
+        {
+            label: '日期',
+            prop: 'date'
+        },
+        {
+            label: '姓名',
+            prop: 'name'
+        },
+        {
+            label: '地址',
+            prop: 'address'
+        }
+    ],
     'data|5-10': [
         {
             date: '@datetime("yyyy-MM-dd HH:mm:ss")',

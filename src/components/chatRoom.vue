@@ -23,6 +23,7 @@
 <script>
 import API from '../api/api.js'
 export default {
+    name: 'chatRoom',
     data () {
         return {
             chatList: [],
