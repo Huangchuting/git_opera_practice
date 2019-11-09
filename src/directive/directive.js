@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Verify from '../util/verify'
  
 // v-dialogDrag: 弹窗拖拽属性
 Vue.directive('dialogDrag', {
@@ -78,5 +79,55 @@ Vue.directive('dialogDrag', {
                 document.onmouseup = null;
             };
         }  
+    }
+})
+
+Vue.directive('verify', {
+    inserted (el, binding, vnode) {
+        let inputEle = el.querySelector('input') ? el.querySelector('input') : el
+        let rules = binding.value
+        let handler = (e) => {
+            for (let i = 0, rule; rule = rules[i++];) {
+                var strategyArr = rule.strategy.split(':')
+                var strategy = strategyArr.shift()
+                strategyArr.unshift(e.target.value)
+                var errorMsg = rule.msg
+                strategyArr.push(errorMsg)
+                let error = Verify[strategy].apply(e, strategyArr)
+                if (error) {
+                    if (el.className.indexOf('is-error') !== -1) {
+                        return
+                    }
+                    el.insertAdjacentHTML('beforeend', `<span class="error-text">${error}</span>`) 
+                    el.className = el.className + ' is-error'
+                    return
+                } else {
+                    if (el.className.indexOf('is-error') !== -1) {
+                        if (el.querySelector('.error-text')) {
+                            let errorHtml = el.querySelector('.error-text')
+                            el.removeChild(errorHtml)
+                        }
+                        el.className = el.className.replace('is-error', '').trim()
+                    }
+                }
+            }
+        }
+
+        inputEle.addEventListener('keyup', handler)
+        inputEle.addEventListener('blur', handler)
+    }
+})
+Vue.directive('verifySubmit', {
+    inserted (el, binding, vnode) {
+        el.addEventListener('click', (e) => {
+            let elements = document.getElementsByClassName('v-check')
+            console.log(elements)
+            let errorInputs = document.getElementsByClassName('is-error')
+            console.log(errorInputs)
+            if(errorInputs.length === 0){
+                
+                // vnode.context.submit();
+            }
+        })
     }
 })

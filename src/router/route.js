@@ -11,6 +11,8 @@ import MyTable from '../main/about/view/Table.vue'
 
 import Form from '../main/form/form.vue'
 
+import Excel from '../main/excel/view/excel.vue'
+
 let routes = [
     {
         path: '/', 
@@ -39,10 +41,10 @@ let routes = [
         path: '/form',
         component: Form
     },
-    // {
-    //     path: '/myTable',
-    //     component: MyTable
-    // },
+    {
+        path: '/excel',
+        component: Excel
+    }
     
 ]
 
