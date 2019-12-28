@@ -30,8 +30,15 @@ export default {
         })
     },
     getTableData () {
-        console.log('pppp')
         return axios.post('/getTableData').then(res => {
+            return res.data
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+    ,
+    getFieldFilterData () {
+        return axios.post('/filterData').then(res => {
             return res.data
         }).catch(error => {
             console.log(error)

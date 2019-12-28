@@ -8,6 +8,7 @@ import Home from '../main/home/home.vue'
 import About from '../main/about/about.vue'
 import Slider from '../main/about/view/Slider.vue'
 import MyTable from '../main/about/view/Table.vue'
+import AnotherTable from '../main/about/view/anotherTable.vue'
 
 import Form from '../main/form/form.vue'
 
@@ -33,6 +34,10 @@ let routes = [
             {
                 path: 'myTable',
                 component: MyTable
+            },
+            {
+                path: 'anotherTable',
+                component: AnotherTable
             }
         ],
         redirect: 'about/slider'

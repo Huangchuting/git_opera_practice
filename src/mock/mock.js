@@ -62,11 +62,13 @@ let tableData = {
         },
         {
             label: '姓名',
-            prop: 'name'
+            prop: 'name',
+            type: 'select'
         },
         {
             label: '地址',
-            prop: 'address'
+            prop: 'address',
+            type: 'input'
         }
     ],
     'data|5-10': [
@@ -78,3 +80,14 @@ let tableData = {
     ]
 }
 Mock.mock(/(\/getTableData)/, 'post', tableData)
+
+let filterData = {
+    'multiple|1': true,
+    'data|3-6': [
+        {
+            text: '@cname',
+            value: '@name'
+        }
+    ]
+}
+Mock.mock(/(\/filterData)/, 'post', filterData)
