@@ -63,7 +63,16 @@ let tableData = {
         {
             label: '姓名',
             prop: 'name',
-            type: 'select'
+            type: 'select',
+            edit: true
+        },
+        {
+            label: '性别',
+            prop: 'sex'
+        },
+        {
+            label: '年龄',
+            prop: 'age'
         },
         {
             label: '地址',
@@ -73,8 +82,11 @@ let tableData = {
     ],
     'data|5-10': [
         {
+            id: Mock.Random.id(),
             date: '@datetime("yyyy-MM-dd HH:mm:ss")',
             name: '@cname',
+            'sex|1': ['男', '女'],
+            age: Random.natural(1, 100),
             address: '@county(true)'
         }
     ]
@@ -88,6 +100,7 @@ let filterData = {
             text: '@cname',
             value: '@name'
         }
-    ]
+    ],
+    value: ''
 }
 Mock.mock(/(\/filterData)/, 'post', filterData)

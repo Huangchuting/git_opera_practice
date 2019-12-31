@@ -131,3 +131,25 @@ Vue.directive('verifySubmit', {
         })
     }
 })
+
+Vue.directive('focus', { // 自动获取焦点
+    bind: (el, binding) => {
+      let defClass = 'el-input'
+      let defTag = 'input'
+      let value = binding.value || true
+      if (typeof value === 'boolean') {
+          console.log('dddfdf')
+        value = {cls: defClass, tag: defTag, foc: value}
+      } else {
+        value = {
+          cls: value.cls || defClass,
+          tag: value.tag || defTag,
+          foc: value.foc || false
+        }
+      }
+      console.log(el.classList.contains(value.cls))
+      if (el.classList.contains(value.cls) && value.foc) {
+        setTimeout(() => {el.getElementsByTagName(value.tag)[0].focus() }, 0)
+      }
+    }
+  })

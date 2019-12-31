@@ -40,7 +40,7 @@ let routes = [
                 component: AnotherTable
             }
         ],
-        redirect: 'about/slider'
+        redirect: 'about/myTable'
     },
     {
         path: '/form',

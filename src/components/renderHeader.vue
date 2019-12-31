@@ -22,12 +22,18 @@
 </template>
 <script>
 export default {
-    props: ['COLUMN', 'MULTIPLE', 'DATA'],
+    props: ['COLUMN', 'MULTIPLE', 'DATA', 'TEXT'],
     data () {
         return {
             text: '', // 输入框
             check: [], // 多选框
             radio: '' // 单选框
+        }
+    },
+    watch: {
+        TEXT (val) {
+            this.text = this.radio = val
+            this.check = val.split(',')
         }
     },
     methods: {

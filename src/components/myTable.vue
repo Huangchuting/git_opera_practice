@@ -3,6 +3,7 @@
         class="my-table"
         :data="tableData"
         row-class-name="row-class"
+        @cell-dblclick="dbEditCell"
     >
         <el-table-column type="index">
         </el-table-column>
@@ -14,6 +15,21 @@
                 :column-key="item.type"
                 :render-header="renderHeader"
             >
+            <template slot-scope="scope">
+                <!--编辑单元格 start-->
+                <template v-if="item.edit">
+                    <el-input 
+                        v-if="scope.row[item.prop+'edit']" 
+                        v-model="scope.row[item.prop]"
+                        v-focus
+                        @keyup.enter.native="saveEdit(scope.row, item.prop)"
+                        @blur="saveEdit(scope.row, item.prop)">
+                    </el-input>
+                    <span v-else>{{scope.row[item.prop]}}</span>
+                </template>
+                <!--编辑单元格 end-->
+                <template v-else>{{scope.row[item.prop]}}</template>
+            </template>
             </el-table-column>
         </template>
     </el-table>
@@ -27,7 +43,8 @@ export default {
         return {
             tableFields: [],
             tableData: [],
-            filtersData: {}
+            filtersData: {},
+            curEditCellText: ''
         }
     },
     mounted () {
@@ -37,7 +54,19 @@ export default {
         init () {
             let tempTableTields
             let tempTableData
+            let editCells = []
             API.getTableData().then(res => {
+                res.fields.forEach(item => {
+                    if (item.edit && editCells.indexOf(item.prop) === -1) {
+                        editCells.push(item.prop)
+                    }
+                })
+                 for (let i = 0; i < res.data.length; i++) {
+                    for (let j = 0; j < editCells.length; j++) {
+                        let key = editCells[j] + 'edit'
+                        res.data[i][key] = false
+                    }
+                }
                 tempTableTields = res.fields
                 tempTableData = res.data
                 return tempTableTields
@@ -45,7 +74,6 @@ export default {
                 this.getFieldsData (tableFields).then(() => {
                     this.tableFields = tempTableTields
                     this.tableData = tempTableData
-                    
                 })
             }).catch(error => {
                 console.log(error)
@@ -67,14 +95,13 @@ export default {
             return 'cell-class';
         },
         renderHeader (h, { column, $index }) {
-            console.log(column)
-            console.log($index)
             let that = this
             return h(RenderHeader, {
                 props: {
                     COLUMN: column,
                     MULTIPLE: (this.filtersData[column.property] && this.filtersData[column.property].multiple) || false,
-                    DATA: (this.filtersData[column.property] && this.filtersData[column.property].data) || []
+                    DATA: (this.filtersData[column.property] && this.filtersData[column.property].data) || [],
+                    TEXT: (this.filtersData[column.property] && this.filtersData[column.property].data) || ''
                 },
                 on: {
                     'inputFilter': (property, value) => that.handleInput(property, value),
@@ -94,6 +121,22 @@ export default {
         handleRadio (property, value) {
             console.log('radio')
             this.init()
+        },
+        // 双击单元格编辑
+        dbEditCell (row, column, cell, event) {
+            row[column.property + 'edit'] = true
+            // 保存当前单元格内容，防止取消修改时可以还原
+            if (row[column.property + 'edit']) {
+                this.curEditCellText = row[column.property]
+            }
+        },
+        // 保存单元格的修改
+        saveEdit (row, property) {
+            console.log('dfdf')
+            if (!row[property]) {
+                row[property] = this.curEditCellText
+            }
+            row[property + 'edit'] = false
         }
     }
 }
