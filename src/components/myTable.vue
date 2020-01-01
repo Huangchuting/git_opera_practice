@@ -1,5 +1,6 @@
 <template>
     <el-table
+        v-if="tableData.length!== 0"
         class="my-table"
         :data="tableData"
         row-class-name="row-class"
@@ -7,7 +8,7 @@
     >
         <el-table-column type="index">
         </el-table-column>
-        <template v-for="(item,index) in tableFields" :index="index">
+        <template v-for="(item,index) in headers" :index="index">
             <el-table-column 
                 :key="item.prop" 
                 :prop="item.prop"
@@ -39,16 +40,39 @@ import API from '../api/api.js'
 import RenderHeader from './renderHeader'
 export default {
     name: 'myTable',
+    props: {
+        uuid: {
+            type: String,
+            default: ''
+        }
+    },
     data () {
         return {
             tableFields: [],
             tableData: [],
             filtersData: {},
-            curEditCellText: ''
+            curEditCellText: '',
+            isFirstGet: true
         }
     },
     mounted () {
         this.init()
+    },
+    watch: {
+        uuid: function (val) {
+            console.log(val)
+            this.init()
+        }
+    },
+    computed: {
+        headers: function () {
+            let temp = []
+            console.log('3', this.tableFields[2].prop)
+            this.tableFields.forEach(item => {
+                temp.push(item)
+            })
+            return temp
+        }
     },
     methods: {
         init () {
@@ -67,14 +91,26 @@ export default {
                         res.data[i][key] = false
                     }
                 }
+                
                 tempTableTields = res.fields
                 tempTableData = res.data
+                if (!this.isFirstGet) {
+                    this.$nextTick(() => {
+                        this.tableFields = tempTableTields
+                        this.tableData = tempTableData
+                    })
+                }
                 return tempTableTields
             }).then(tableFields => {
-                this.getFieldsData (tableFields).then(() => {
-                    this.tableFields = tempTableTields
-                    this.tableData = tempTableData
-                })
+                if (this.isFirstGet) {
+                    this.getFieldsData (tableFields).then(() => {
+                        this.$nextTick(() => {
+                            this.tableFields = tempTableTields
+                            this.tableData = tempTableData
+                            this.isFirstGet = false
+                        })
+                    })
+                }
             }).catch(error => {
                 console.log(error)
             })

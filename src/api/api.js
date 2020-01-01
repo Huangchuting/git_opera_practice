@@ -30,7 +30,10 @@ export default {
         })
     },
     getTableData () {
-        return axios.post('/getTableData').then(res => {
+        let rand = Math.floor(Math.random()*(100 - 1) + 1)
+        let num = (rand % 2) === 0 ? 1 : 2
+        let url = `getTableData${num}`
+        return axios.post(`/${url}`).then(res => {
             return res.data
         }).catch(error => {
             console.log(error)

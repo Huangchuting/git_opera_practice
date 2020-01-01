@@ -54,7 +54,7 @@ let chatDataAdd = {
 }
 Mock.mock(/(\/getChatAdd)/, 'post', chatDataAdd)
 
-let tableData = {
+let tableData1 = {
     'fields': [
         {
             label: '日期',
@@ -68,11 +68,13 @@ let tableData = {
         },
         {
             label: '性别',
-            prop: 'sex'
+            prop: 'sex',
+            type: 'select'
         },
         {
             label: '年龄',
-            prop: 'age'
+            prop: 'age',
+            type: 'input'
         },
         {
             label: '地址',
@@ -91,7 +93,47 @@ let tableData = {
         }
     ]
 }
-Mock.mock(/(\/getTableData)/, 'post', tableData)
+let tableData2 = {
+    'fields': [
+        {
+            label: '日期',
+            prop: 'date'
+        },
+        {
+            label: '姓名',
+            prop: 'name',
+            type: 'select',
+            edit: true
+        },
+        {
+            label: '年龄',
+            prop: 'age',
+            type: 'input'
+        },
+        {
+            label: '性别',
+            prop: 'sex',
+            type: 'select'
+        },
+        {
+            label: '地址',
+            prop: 'address',
+            type: 'input'
+        }
+    ],
+    'data|5-10': [
+        {
+            id: Mock.Random.id(),
+            date: '@datetime("yyyy-MM-dd HH:mm:ss")',
+            name: '@cname',
+            'sex|1': ['男', '女'],
+            age: Random.natural(1, 100),
+            address: '@county(true)'
+        }
+    ]
+}
+Mock.mock(/(\/getTableData1)/, 'post', tableData1)
+Mock.mock(/(\/getTableData2)/, 'post', tableData2)
 
 let filterData = {
     'multiple|1': true,
