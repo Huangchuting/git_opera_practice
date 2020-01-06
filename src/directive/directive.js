@@ -153,3 +153,35 @@ Vue.directive('focus', { // 自动获取焦点
       }
     }
   })
+
+Vue.directive('tableScrollTo', {
+    bind (el, binding) {
+        const selectWrp = el.querySelector('.el-table__body-wrapper')
+        if (binding.value.type) {
+            selectWrp.addEventListener('scroll', () => {
+                window.sessionStorage.setItem('scrollTop' + binding.value.type, this.scrollTop)
+            })
+        }
+    },
+    componentUpdated (el, binding) {
+        const selectWrp = el.querySelector('.el-table__body-wrapper')
+        let t = window.sessionStorage.getItem('scrollTop' + binding.value.type) || 0
+        if (binding.value.type) {
+            let timer = setTimeout(() => {
+                $(selectWrp).animate({
+                    scrollTop: t
+                }, 'fast')
+                // chrome 53版本不支持以下方法
+                // selectWrp.scrollTo({
+                //     top: t,
+                //     behavior: 'smooth'
+                // })
+
+                clearTimeout(timer)
+            }, 0)
+        }
+    }
+})
+/*
+v-tableScrollTo = "{type: 'sss', uuid: 'refresh'}"
+*/
