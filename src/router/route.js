@@ -14,6 +14,9 @@ import Form from '../main/form/form.vue'
 
 import Excel from '../main/excel/view/excel.vue'
 
+import CSSDemo from '../main/cssDemo/cssDemo.vue'
+import TextGradient from '../main/cssDemo/views/textGradient.vue'
+
 let routes = [
     {
         path: '/', 
@@ -49,6 +52,17 @@ let routes = [
     {
         path: '/excel',
         component: Excel
+    },
+    {
+        path: '/cssdemo',
+        component: CSSDemo,
+        children: [
+            {
+                path: 'textGradient',
+                component: TextGradient
+            }
+        ],
+        redirect: 'cssdemo/textGradient'
     }
     
 ]

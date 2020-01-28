@@ -29,6 +29,15 @@ html,body, .full{
 .hidden{
     overflow: hidden;
 }
+.wrap30{
+    padding: 30px;;
+}
+/**/
+.side-wrap{
+    background: pink;
+    padding: 10px;
+}
+
 
 /*表单验证样式*/
 .va{

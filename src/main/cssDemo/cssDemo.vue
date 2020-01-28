@@ -1,7 +1,7 @@
 <template>
     <div class="full horizontal">
         <sider></sider>
-        <div class="flex hidden">
+        <div class="flex hidden wrap30">
             <router-view></router-view>
         </div>
     </div>
@@ -20,5 +20,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-
-

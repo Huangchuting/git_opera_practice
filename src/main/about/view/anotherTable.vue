@@ -5,7 +5,7 @@
     
 </template>
 <script>
-import OtherTable from '../../../components/otherTable'
+// import OtherTable from '../../../components/otherTable'
 export default {
     data () {
         return {
@@ -13,7 +13,7 @@ export default {
         }
     },
     components: {
-        OtherTable
+        // OtherTable
     }
 }
 </script>
