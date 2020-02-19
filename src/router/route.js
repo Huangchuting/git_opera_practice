@@ -16,6 +16,8 @@ import Excel from '../main/excel/view/excel.vue'
 
 import CSSDemo from '../main/cssDemo/cssDemo.vue'
 import TextGradient from '../main/cssDemo/views/textGradient.vue'
+import Demo from '../main/cssDemo/views/demo.vue'
+import RandomParticle from '../main/cssDemo/views/randomParticle.vue'
 
 let routes = [
     {
@@ -60,6 +62,14 @@ let routes = [
             {
                 path: 'textGradient',
                 component: TextGradient
+            },
+            {
+                path: 'demo',
+                component: Demo
+            },
+            {
+                path: 'randomParticle',
+                component: RandomParticle
             }
         ],
         redirect: 'cssdemo/textGradient'

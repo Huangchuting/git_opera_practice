@@ -1,7 +1,7 @@
 <template>
     <div class="full horizontal">
         <sider></sider>
-        <div class="flex hidden wrap30">
+        <div class="flex hidden wrap30 wrap">
             <router-view></router-view>
         </div>
     </div>
@@ -18,5 +18,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.wrap{
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    filter: drop-shadow(0 0 10px white);
+}
 </style>
