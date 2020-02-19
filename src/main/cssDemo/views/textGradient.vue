@@ -22,9 +22,6 @@
             </defs>
             <text text-anchor="middle" class="gradient-text gradient-text-three" x="40%" y="30%">低头思故乡。</text>
         </svg>
-        <div class="gradient-text gradient-text-three">
-            
-        </div>
     </div>
 </template>
 <script>
