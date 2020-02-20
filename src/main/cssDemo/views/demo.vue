@@ -69,6 +69,15 @@
                 </button>
             </div>
         </div>
+        <div class="demo">
+            <h5>5.伪元素</h5>
+            <div class="demo-5">
+                <header>
+                    <h1 class="title slide-bar">I'm alphardex.</h1>
+                    <p class="subtitle slide-bar">A CSS Wizard</p>
+                </header>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -581,6 +590,81 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             }
         }
     }
+}
+.demo-5{
+    .slide-bar {
+        position: relative;
+        color: transparent;
+        animation: fill-text-white 2s 1.6s forwards;
+
+        &::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #35b9f1;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: slide-in-out 2s cubic-bezier(0.75, 0, 0, 1) forwards;
+        }
+    }
+
+    @keyframes slide-in-out {
+        50% {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        50.1% {
+            transform-origin: right;
+        }
+
+        100% {
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+    }
+
+    @keyframes fill-text-white {
+        to {
+            color: white;
+        }
+    }
+
+    header {
+        .title,
+        .subtitle {
+            width: 250px;
+            height: 30px;
+        }
+
+        .title {
+            margin: 0;
+            font-size: 32px;
+            line-height: 30px;
+
+            &::before {
+                background: #FF4081;
+            }
+        }
+
+        .subtitle {
+            margin: 10px 0 0 0;
+            font-size: 12px;
+            line-height: 30px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            animation-delay: 3.2s;
+
+            &::before {
+                background: #03A9F4;
+                animation-delay: 2s;
+            }
+        }
+    }
+
 }
 
 </style>
