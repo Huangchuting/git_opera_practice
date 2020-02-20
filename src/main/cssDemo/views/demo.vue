@@ -140,6 +140,20 @@
                 </nav>
             </div>
         </div>
+         <div class="demo">
+            <h5>10.box-shadow</h5>
+            <div class="demo-10">
+                <ul class="pagination">
+                    <li class="page-prev" @click="changePage(0, 'prev')">
+                        <span class="prev iconfont icon-plant-"></span>
+                    </li>
+                    <li class="page-number" v-for="(page, i) in pagination" :key="i"  @click="changePage(page, 0)" :class="[currentPage === page ? 'active' : '']"><span>{{page}}</span></li>
+                    <li class="page-next" @click="changePage(0, 'next')">
+                        <span class="next iconfont icon-plant-1"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -171,7 +185,9 @@ export default {
                     active: false
                 }
             ],
-            activeNav: 0
+            activeNav: 0,
+            currentPage: 1,
+            pagination: [1, 2, 3, 4, 5]
         }
     },
     mounted () {
@@ -183,6 +199,17 @@ export default {
             })
             this.activeNav = index
             item.active = true
+        },
+        changePage(page, direction) {
+            if (page) {
+                this.currentPage = page
+            } else if (direction === 'prev') {
+                if (this.currentPage === this.pagination[0]) return
+                this.currentPage -= 1
+            } else {
+                if (this.currentPage === this.pagination[this.pagination.length - 1]) return
+                this.currentPage += 1
+            }
         }
     }
 }
@@ -989,6 +1016,71 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             border-radius: 20px;
             // transform: translateX($navtab-item-width * $active-index);
             transition: 0.5s ease;
+        }
+    }
+}
+.demo-10{
+    .pagination {
+        display: inline-flex;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 50px;
+        box-shadow:    0 0.3px 0.6px rgba(0, 0, 0, 0.056),
+            0 0.7px 1.3px rgba(0, 0, 0, 0.081),
+            0 1.3px 2.5px rgba(0, 0, 0, 0.1),
+            0 2.2px 4.5px rgba(0, 0, 0, 0.119),
+            0 4.2px 8.4px rgba(0, 0, 0, 0.144),
+            0 10px 20px rgba(0, 0, 0, 0.2);
+        list-style-type: none;
+
+        li {
+            margin: 0 5px;
+            cursor: pointer;
+
+            &.page-number {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+
+                &:hover span {
+                    color: white;
+                    background: #777;
+                }
+
+                &.active span {
+                    color: white;
+                    background: #333;
+                }
+            }
+
+            &.page-prev .iconfont,
+            &.page-next .iconfont{
+                font-size: 20px;
+            }
+
+            &.page-prev {
+                margin-right: 20px;
+            }
+
+            &.page-next {
+                margin-left: 20px;
+            }
+
+            span {
+                display: block;
+                line-height: 50px;
+                font-size: 20px;
+                font-weight: 600;
+                text-decoration: none;
+                color: #777;
+                border-radius: 50%;
+                transition: 0.3s;
+                &.prev:hover,
+                &.next:hover {
+                    color: #000;
+                }
+            }
         }
     }
 }
