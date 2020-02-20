@@ -14,7 +14,7 @@
             <h5>2.1用JS分割文本1</h5>
             <div class="demo-2-1">
                 <div class="landIn">
-                    <span v-for="(item, index) in  splitTexts" :key="index">{{item}}</span>
+                    <span v-for="(item, index) in  landInTexts.split('')" :key="index" :style="{animationDelay: `${index * .03}s`}">{{item}}</span>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <h5>2.2用JS分割文本2</h5>
             <div class="demo-2-2">
                 <div class="reveal">
-                    <span v-for="(item, index) in  splitRevealTexts" v-bind:style="{animationDelay: `${.3 + Math.abs(index - revealTextsMid) * .1}s`}" :key="index">{{item}}</span>
+                    <span v-for="(item, index) in  revealTexts.split('')" :style="{animationDelay: `${.3 + Math.abs(index - revealTexts.split('').length / 2) * .1}s`}" :key="index">{{item}}</span>
                 </div>
             </div>
         </div>
@@ -78,6 +78,16 @@
                 </header>
             </div>
         </div>
+        <div class="demo">
+            <h5>6.attr()生成文本内容</h5>
+            <div class="demo-6">
+                <ul class="float-text-menu">
+                    <li v-for="(letters, index1) in textMenu" :key='index1'>
+                        <span v-for="(letter, index2) in letters.split('')" :key='index2' :style="{transitionDelay: `${index2 / 20}s`}" :data-text='letter'>{{letter}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -85,35 +95,13 @@ export default {
     data () {
         return {
             landInTexts: 'Ano hi watashitachi mada shiranai no Fushigi no monogatari desu.',
-            splitTexts: [],
-
             revealTexts: 'sword art online',
-            splitRevealTexts: [],
-            revealTextsMid: 0
+            textMenu: ['Home', 'Archives', 'Tags', 'Categories', 'About']
         }
     },
     mounted () {
-        
-        this.initLandIn()
-        this.initReveal()
     },
     methods: {
-        // 2.1用JS分割文本1
-        initLandIn() {
-            let letters = this.landInTexts.split('')
-            letters.forEach((letter, i) => {
-                let timer = setTimeout(() => {
-                    this.splitTexts.push(letter)
-                    clearTimeout(timer)
-                }, i * 100)
-            })
-        },
-        // 2.2用JS分割文本2
-        initReveal() {
-            let letters = this.revealTexts.split('')
-            this.splitRevealTexts = letters
-            this.revealTextsMid = letters.length / 2
-        }
     }
 }
 </script>
@@ -666,5 +654,37 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
     }
 
 }
+.demo-6{
+    .float-text-menu {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
 
+        li {
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+            overflow: hidden;
+            text-align: center;
+
+            span {
+                position: relative;
+                transition: transform 0.3s ease-in-out;
+                display: inline-block;
+                &:before {
+                    position: absolute;
+                    content: attr(data-text);
+                    color: #7ef9ff;
+                    transform: translateY(130%);
+                }
+            }
+
+            &:hover {
+                span {
+                    transform: translateY(-130%);
+                }
+            }
+        }
+    }
+}
 </style>
