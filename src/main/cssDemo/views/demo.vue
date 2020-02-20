@@ -89,11 +89,41 @@
             </div>
         </div>
         <div class="demo">
-            <h5>overflow障眼法</h5>
+            <h5>7.overflow障眼法</h5>
             <div class="demo-7">
                 <button class="btn btn-primary btn-ghost btn-shine">
                     hover me
                 </button>
+            </div>
+        </div>
+        <div class="demo">
+            <h5>8.兄弟选择符定制表单元素</h5>
+            <div class="demo-8">
+                <form>
+                    <fieldset class="todo-list">
+                        <legend class="todo-list__title">My Special Todo List</legend>
+                        <label class="todo-list__label">
+                            <input type="checkbox" name="" id="" />
+                            <i class="check"></i>
+                            <span>Make awesome CSS animation</span>
+                        </label>
+                        <label class="todo-list__label">
+                            <input type="checkbox" name="" id="" />
+                            <i class="check"></i>
+                            <span>Watch awesome bangumi</span>
+                        </label>
+                        <label class="todo-list__label">
+                            <input type="checkbox" name="" id="" />
+                            <i class="check"></i>
+                            <span>Encounter awesome people</span>
+                        </label>
+                        <label class="todo-list__label">
+                            <input type="checkbox" name="" id="" />
+                            <i class="check"></i>
+                            <span>Be an awesome man</span>
+                        </label>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
@@ -763,5 +793,80 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         }
     }
 
+}
+.demo-8{
+    .todo-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0 75px 10px 30px;
+        background: #162740;
+        border: transparent;
+
+        .todo-list__title {
+            padding: 3px 6px;
+            color: #f1faee;
+            background-color: #264456;
+        }
+
+        .todo-list__label {
+            display: flex;
+            align-items: center;
+            margin: 40px 0;
+            font-size: 24px;
+            font-family: Lato, sans-serif;
+            color: #f1faee;
+            cursor: pointer;
+
+                input[type="checkbox"] {
+                opacity: 0;
+                appearance: none;
+
+                & + .check {
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    border: 2px solid #f1faee;
+                    transition: 0.2s;
+                }
+
+                &:checked + .check {
+                    width: 25px;
+                    height: 15px;
+                    border-top: transparent;
+                    border-right: transparent;
+                    transform: rotate(-45deg);
+                }
+
+                & ~ span {
+                    position: relative;
+                    left: 40px;
+                    white-space: nowrap;
+                    transition: 0.5s;
+
+                    &::before {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: #f1faee;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.5s;
+                    }
+                }
+
+                &:checked ~ span {
+                    color: #585b57;
+
+                    &::before {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                    }
+                }
+            }
+        }
+        }
 }
 </style>
