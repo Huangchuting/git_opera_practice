@@ -140,7 +140,7 @@
                 </nav>
             </div>
         </div>
-         <div class="demo">
+        <div class="demo">
             <h5>10.box-shadow</h5>
             <div class="demo-10">
                 <ul class="pagination">
@@ -152,6 +152,11 @@
                         <span class="next iconfont icon-plant-1"></span>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div class="demo">
+            <h5>11.</h5>
+            <div class="demo-11">
             </div>
         </div>
     </div>
@@ -1084,4 +1089,5 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         }
     }
 }
+
 </style>
