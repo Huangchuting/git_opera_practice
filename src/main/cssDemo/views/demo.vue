@@ -43,6 +43,32 @@
                 </button>
             </div>
         </div>
+        <div class="demo">
+            <h5>4.绝对定位实现多重边框</h5>
+            <div class="demo-4">
+                <button class="btn btn-primary btn-ghost btn-multiple-border-stroke">
+                    <div class="btn-borders-group">
+                        <div class="border-top"></div>
+                        <div class="border-right"></div>
+                        <div class="border-bottom"></div>
+                        <div class="border-left"></div>
+                    </div>
+                    <div class="btn-borders-group">
+                        <div class="border-top"></div>
+                        <div class="border-right"></div>
+                        <div class="border-bottom"></div>
+                        <div class="border-left"></div>
+                    </div>
+                    <div class="btn-borders-group">
+                        <div class="border-top"></div>
+                        <div class="border-right"></div>
+                        <div class="border-bottom"></div>
+                        <div class="border-left"></div>
+                    </div>
+                    <span class="btn-text">Start</span>
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -389,6 +415,168 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
                     opacity: 1;
                     transform: translateY(0);
                     transition: 0.75s 0.1s $ease-out-exponential;
+                }
+            }
+        }
+    }
+}
+.demo-4{
+    .btn {
+        $hue: 190;
+        $ease-in-duration: 0.25s;
+        $ease-out-duration: 0.65s;
+        $ease-out-delay: $ease-in-duration;
+        position: relative;
+        padding: 1rem 3rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: white;
+        text-decoration: none;
+        background-color: hsl($hue, 100%, 41%);
+        border: 1px solid hsl($hue, 100%, 41%);
+        outline: transparent;
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+        transition: 0.25s;
+
+        &:hover {
+            background: hsl($hue, 100%, 31%);
+        }
+
+        &-primary {
+            $hue: 171;
+        }
+
+        &-ghost {
+            color: hsl($hue, 100%, 41%);
+            background-color: transparent;
+            border-color: hsl($hue, 100%, 41%);
+
+            &:hover {
+            color: white;
+            }
+        }
+
+        &-multiple-border-stroke {
+            border-color: transparent;
+
+            .btn-borders-group {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                border: 1px solid hsla($hue, 100%, 41%, 0.35);
+
+                &:nth-child(1) {
+                    left: -8px;
+                    padding: 0 8px;
+                }
+
+                &:nth-child(2) {
+                    top: -8px;
+                    padding: 8px 0;
+                }
+
+                &:nth-child(3) {
+                    top: -4px;
+                    left: -4px;
+                    padding: 4px;
+                }
+
+                .border-top {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: hsl($hue, 100%, 41%);
+                    transform: scaleX(0);
+                    transform-origin: left;
+                }
+
+                .border-right {
+                    position: absolute;
+                    right: 0;
+                    width: 1px;
+                    height: 100%;
+                    background: hsl($hue, 100%, 41%);
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                }
+
+                .border-bottom {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: hsl($hue, 100%, 41%);
+                    transform: scaleX(0);
+                    transform-origin: left;
+                }
+
+                .border-left {
+                    position: absolute;
+                    left: 0;
+                    width: 1px;
+                    height: 100%;
+                    background: hsl($hue, 100%, 41%);
+                    transform: scaleY(0);
+                    transform-origin: bottom;
+                }
+
+                // when unhover, ease-in top, right; ease-out bottom, left
+
+                .border-left {
+                    transition: $ease-out-duration $ease-out-delay cubic-bezier(0.2, 1, 0.2, 1);
+                }
+
+                .border-bottom {
+                    transition: $ease-out-duration $ease-out-delay cubic-bezier(0.2, 1, 0.2, 1);
+                }
+
+                .border-right {
+                    transition: $ease-in-duration cubic-bezier(1, 0, 0.8, 0);
+                }
+
+                .border-top {
+                    transition: $ease-in-duration cubic-bezier(1, 0, 0.8, 0);
+                }
+            }
+
+            &:hover {
+                color: hsl($hue, 100%, 41%);
+                background: transparent;
+
+                .border-top,
+                .border-bottom {
+                    transform: scaleX(1);
+                }
+
+                .border-left,
+                .border-right {
+                    transform: scaleY(1);
+                }
+
+                // when hover, ease-in bottom, left; ease-out top, right
+
+                .border-left {
+                    transition: $ease-in-duration cubic-bezier(1, 0, 0.8, 0);
+                }
+
+                .border-bottom {
+                    transition: $ease-in-duration cubic-bezier(1, 0, 0.8, 0);
+                }
+
+                .border-right {
+                    transition: $ease-out-duration $ease-out-delay cubic-bezier(0.2, 1, 0.2, 1);
+                }
+
+                .border-top {
+                    transition: $ease-out-duration $ease-out-delay cubic-bezier(0.2, 1, 0.2, 1);
                 }
             }
         }
