@@ -10,6 +10,7 @@ import router from './router/route'
 import './directive/directive'
 import Toast from './plugins/toast'
 import './assets/css/index.css'
+import './assets/fonts/iconfont.css'
 
 require('./mock/mock.js')
 

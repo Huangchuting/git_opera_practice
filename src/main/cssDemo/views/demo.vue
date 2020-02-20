@@ -126,6 +126,20 @@
                 </form>
             </div>
         </div>
+        <div class="demo">
+            <h5>9.border-radius</h5>
+            <div class="demo-9">
+                <nav class="navtab">
+                    <ul>
+                        <li class="navtab-item" v-for="(item, index) in navList" :key="index" :class="[item.active ? 'active' : '']" @click="changeNav(item, index)">
+                            <span class="iconfont" :class="[item.icon]"></span>
+                            <span class="text">{{item.text}}</span>
+                        </li>
+                    </ul>
+                    <div class="navtab-active" :style="{transform: `translateX(${130 * activeNav}px)`}"></div>
+                </nav>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -134,12 +148,42 @@ export default {
         return {
             landInTexts: 'Ano hi watashitachi mada shiranai no Fushigi no monogatari desu.',
             revealTexts: 'sword art online',
-            textMenu: ['Home', 'Archives', 'Tags', 'Categories', 'About']
+            textMenu: ['Home', 'Archives', 'Tags', 'Categories', 'About'],
+            navList: [
+                {
+                    icon: 'icon-plant-',
+                    text: 'Home',
+                    active: true
+                },
+                {
+                    icon: 'icon-plant-1',
+                    text: 'Explore',
+                    active: false
+                },
+                {
+                    icon: 'icon-plant-2',
+                    text: 'Collection',
+                    active: false
+                },
+                {
+                    icon: 'icon-plant-3',
+                    text: 'Help',
+                    active: false
+                }
+            ],
+            activeNav: 0
         }
     },
     mounted () {
     },
     methods: {
+        changeNav(item, index) {
+            this.navList.forEach((nav, i) => {
+                nav.active = false
+            })
+            this.activeNav = index
+            item.active = true
+        }
     }
 }
 </script>
@@ -868,5 +912,84 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             }
         }
         }
+}
+.demo-9{
+    @mixin center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navtab {
+        $navtab-width: 600px;
+        $navtab-item-width: $navtab-width / 4 - 20px;
+        $navtab-overlay-width: $navtab-item-width + 80px;
+        $active-index: 0;
+
+        position: relative;
+        width: $navtab-width;
+        height: 150px;
+        background: white;
+        border: 1em solid white;
+        // https://9elements.github.io/fancy-border-radius/full-control.html#15.5.15.15-50.95.50.85-150.600
+        border-radius: 5% 5% 15% 15% / 15% 15% 50% 50%;
+        overflow: hidden;
+
+        ul {
+            @include center;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+
+            .navtab-item {
+                @include center;
+                z-index: 2;
+                flex-direction: column;
+                width: $navtab-item-width;
+                height: 100%;
+                color: #0288d1;
+                cursor: pointer;
+                transition: 0.5s ease;
+
+                .iconfont {
+                    font-size: 36px;
+                    transition: 0.5s ease;
+                }
+
+                .text {
+                    font-size: 20px;
+                    user-select: none;
+                    opacity: 0;
+                    transition: 0.5s ease;
+                }
+
+                &.active {
+                    width: $navtab-overlay-width;
+
+                    .iconfont {
+                        transform: translateY(-10px);
+                    }
+
+                    .text {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .navtab-active {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: $navtab-overlay-width;
+            background: #b3e5fc;
+            border-radius: 20px;
+            // transform: translateX($navtab-item-width * $active-index);
+            transition: 0.5s ease;
+        }
+    }
 }
 </style>
