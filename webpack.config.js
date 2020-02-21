@@ -56,8 +56,12 @@ module.exports = {
                 loader: 'url-loader'
             },
             {
-                test: /\.(ttf|eot|svg|woff|woff2)$/,
-                loader: 'url-loader'
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: 'video/[name].[ext]'
+                }
             }
         ]
     },
