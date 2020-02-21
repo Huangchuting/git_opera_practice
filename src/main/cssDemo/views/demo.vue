@@ -160,6 +160,23 @@
                 <div class="loading"></div>
             </div>
         </div>
+        <div class="demo">
+            <h5>12.发光文本</h5>
+            <div class="demo-12">
+                <h1 class="glowIn">
+                    <span v-for="(item, index) in  lightTextTit.split('')" :key="index" :style="{animationDelay: `${index * .03}s`}">{{item}}</span>
+                </h1>
+                <p class="glowIn">
+                    <span v-for="(item, index) in  lightTextDesc.split('')" :key="index" :style="{animationDelay: `${index * .03}s`}">{{item}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="demo">
+            <h5>13.霓虹文本</h5>
+            <div class="demo-13">
+                <div class="neon">fushigi no monogatari</div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -193,7 +210,9 @@ export default {
             ],
             activeNav: 0,
             currentPage: 1,
-            pagination: [1, 2, 3, 4, 5]
+            pagination: [1, 2, 3, 4, 5],
+            lightTextTit: 'Hello World',
+            lightTextDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.'
         }
     },
     mounted () {
@@ -1126,5 +1145,56 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
     }
     }
 
+}
+.demo-12{
+    h1{
+        text-align: center;
+    }
+    .glowIn {
+        color: white;
+        line-height: 1.8;
+        span {
+            animation: glow-in 0.8s both;
+        }
+    }
+
+    @keyframes glow-in {
+        from {
+            opacity: 0;
+        }
+        65% {
+            opacity: 1;
+            text-shadow: 0 0 25px white;
+        }
+        75% {
+            opacity: 1;
+        }
+        to {
+            opacity: 0.7;
+        }
+    }
+}
+.demo-13{
+    .neon {
+        color: #cce7f8;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        animation: shining 0.1s alternate infinite;
+    }
+
+    @keyframes shining {
+        from {
+            text-shadow: 0 0 6px rgba(182, 211, 207, 0.9),
+            0 0 30px rgba(182, 211, 207, 0.3), 0 0 12px rgba(15, 115, 223, 0.5),
+            0 0 21px rgba(15, 115, 223, 0.9), 0 0 34px rgba(15, 115, 223, 0.8),
+            0 0 54px rgba(15, 115, 223, 0.9);
+        }
+        to {
+            text-shadow: 0 0 6px rgba(182, 211, 207, 1),
+            0 0 30px rgba(182, 211, 207, 0.4), 0 0 12px rgba(15, 115, 223, 0.6),
+            0 0 22px rgba(15, 115, 223, 0.8), 0 0 38px rgba(15, 115, 223, 0.9),
+            0 0 60px rgba(15, 115, 223, 1);
+        }
+    }
 }
 </style>
