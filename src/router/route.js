@@ -19,6 +19,7 @@ import TextGradient from '../main/cssDemo/views/textGradient.vue'
 import Demo from '../main/cssDemo/views/demo.vue'
 import RandomParticle from '../main/cssDemo/views/randomParticle.vue'
 import Shadow from '../main/cssDemo/views/shadow.vue'
+import Dialog from '../main/cssDemo/views/dialog.vue'
 
 let routes = [
     {
@@ -75,6 +76,10 @@ let routes = [
             {
                 path: 'shadow',
                 component: Shadow
+            },
+            {
+                path: 'dialog',
+                component: Dialog
             }
         ],
         redirect: 'cssdemo/textGradient'

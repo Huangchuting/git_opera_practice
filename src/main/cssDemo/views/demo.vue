@@ -197,6 +197,10 @@
                 </ul>
             </div>
         </div>
+        <div class="demo">
+            <h5>16.linear-gradient</h5>
+            
+        </div>
     </div>
 </template>
 <script>
@@ -1308,5 +1312,8 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             }
         }
     }
+}
+.demo-16{
+    
 }
 </style>

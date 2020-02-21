@@ -4,6 +4,7 @@
         <router-link tag="li" to='/cssdemo/demo'>demo</router-link>
         <router-link tag="li" to='/cssdemo/randomParticle'>随机粒子动画</router-link>
         <router-link tag="li" to='/cssdemo/shadow'>遮罩</router-link>
+        <router-link tag="li" to='/cssdemo/dialog'>弹窗</router-link>
     </ul>
 </template>
 <script>
