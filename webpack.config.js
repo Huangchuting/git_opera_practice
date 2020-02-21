@@ -47,7 +47,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(jpg|jpeg|png|gif|bmp)$/,
+                test: /\.(jpg|jpeg|png|gif|bmp|webp)$/,
                 loader: 'url-loader'
                 // ?limit=7632 limit给定的值是图片的大小，单位是byte，如果引用的图片是大于或等于limit值，则不会被转为base64格式的字符串，如果图片大小小于给定的limit值，则会被转为base64的字符串
             },

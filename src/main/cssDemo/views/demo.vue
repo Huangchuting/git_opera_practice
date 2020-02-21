@@ -214,6 +214,14 @@
                 </ul>
             </div>
         </div>
+        <div class="demo">
+            <h5>18.backdrop-filter</h5>
+            <div class="demo-18">
+                <div class="frosted-glass">
+                    <h1 class="title">sakura</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -324,6 +332,12 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
     }
 }
 .demo-2-1{
+    height: 500px;
+    padding: 30px;
+    background-image: linear-gradient(rgba(16, 16, 16, 0.8),
+      rgba(16, 16, 16, 0.8)),
+    url('../../../assets/images/buDT4YS6zUMfHst.jpg');
+  background-size: cover;
     .landIn{
         display: flex;
         flex-wrap: wrap;
@@ -1195,7 +1209,15 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
 
 }
 .demo-12{
+    height: 500px;
+    background: linear-gradient(
+      rgba(16, 16, 16, 0.8),
+      rgba(16, 16, 16, 0.8)
+    ),url('../../../assets/images/RtVq2wxQYySDb8L.jpg');
+    background-size: cover;
+    background-position: center;
     font-family: Lora, serif;
+    padding: 30px;
     h1{
         text-align: center;
     }
@@ -1505,6 +1527,45 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             letter-spacing: 1px;
             text-transform: uppercase;
             color: white;
+        }
+    }
+}
+.demo-18{
+    height: 500px;
+    background: url('../../../assets/images/GAYyzeKsiWjP5qO.webp') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .frosted-glass {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 60px;
+        box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126),
+            0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224),
+            0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(20px);
+        transition: 0.5s ease;
+
+        &:hover {
+            box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.157),
+            0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28),
+            0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            padding-left: 0.375em;
+            font-size: 3.6em;
+            font-family: Lato, sans-serif;
+            font-weight: 200;
+            letter-spacing: 0.75em;
+            color: white;
+
+            @media (max-width: 640px) {
+            font-size: 2em;
+            }
         }
     }
 }
