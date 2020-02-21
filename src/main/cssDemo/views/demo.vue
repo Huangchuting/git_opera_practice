@@ -185,6 +185,18 @@
                 </div>
             </div>
         </div>
+        <div class="demo">
+            <h5>15.background-clip:text</h5>
+            <div class="demo-15">
+                <ul>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">archives</a></li>
+                    <li><a href="#">tags</a></li>
+                    <li><a href="#">categories</a></li>
+                    <li><a href="#">about</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -1245,6 +1257,43 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         to {
             text-shadow: float-text-3d($floating: true);
             transform: translateY(-20px);
+        }
+    }
+}
+.demo-15{
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        list-style-type: none;
+
+        li {
+            padding: 6px 0;
+
+            a {
+                $fill-color: #198CE6;
+                position: relative;
+                display: block;
+                padding: 4px 0;
+                font-family: Raleway, sans-serif;
+                font-size: 3em;
+                font-weight: 700;
+                text-decoration: none;
+                text-transform: uppercase;
+                -webkit-text-stroke: 2px $fill-color;
+                background: linear-gradient(90deg, $fill-color 0%, $fill-color 100%);
+                background-size: 0;
+                background-position: left;
+                background-repeat: no-repeat;
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+                transition: 0.5s linear;
+
+                &:hover {
+                    background-size: 100%;
+                }
+            }
         }
     }
 }
