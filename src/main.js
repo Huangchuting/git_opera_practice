@@ -11,6 +11,7 @@ import './directive/directive'
 import Toast from './plugins/toast'
 import './assets/css/index.css'
 import './assets/fonts/iconfont.css'
+import './assets/fonts/webfonts/webfonts.css'
 
 require('./mock/mock.js')
 

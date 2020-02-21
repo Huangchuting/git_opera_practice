@@ -177,6 +177,14 @@
                 <div class="neon">fushigi no monogatari</div>
             </div>
         </div>
+        <div class="demo">
+            <h5>14.伪3D文本</h5>
+            <div class="demo-14">
+                <div class="loading">
+                    <span v-for="(item, index) in  loading.split('')" :key="index" :style="{animationDelay: `${index / 10}s`}">{{item}}</span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -212,7 +220,8 @@ export default {
             currentPage: 1,
             pagination: [1, 2, 3, 4, 5],
             lightTextTit: 'Hello World',
-            lightTextDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.'
+            lightTextDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.',
+            loading: 'Loading'
         }
     },
     mounted () {
@@ -1194,6 +1203,48 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             0 0 30px rgba(182, 211, 207, 0.4), 0 0 12px rgba(15, 115, 223, 0.6),
             0 0 22px rgba(15, 115, 223, 0.8), 0 0 38px rgba(15, 115, 223, 0.9),
             0 0 60px rgba(15, 115, 223, 1);
+        }
+    }
+}
+.demo-14{
+    @function float-text-3d($shadow-color: #bbb, $depth: 10, $floating: false) {
+        $shadows: ();
+
+        // When dropped, it will shrink like a spring. When floating, it grows into its shape.
+        @for $i from 1 to $depth {
+            @if ($floating == false and $i > $depth / 2) {
+            $shadow-color: transparent;
+            }
+            $shadows: append($shadows, 0 ($i * 1px) $shadow-color, comma);
+        }
+
+        // When dropped, the shadow reveals. When floating, the shadow fades.
+        @if ($floating == false) {
+            $shadows: append($shadows, 0 10px 10px rgba(0, 0, 0, 0.4), comma);
+        } @else {
+            $shadows: append($shadows, 0 50px 25px rgba(0, 0, 0, 0.2), comma);
+        }
+
+        @return $shadows;
+    }
+    .loading {
+        display: flex;
+        color: white;
+        font-size: 5em;
+        font-family: "Baloo Bhaijaan", cursive;
+        text-transform: uppercase;
+
+        span {
+            text-shadow: float-text-3d($floating: false);
+            transform: translateY(20px);
+            animation: bounce 0.5s ease infinite alternate;
+        }
+    }
+
+    @keyframes bounce {
+        to {
+            text-shadow: float-text-3d($floating: true);
+            transform: translateY(-20px);
         }
     }
 }
