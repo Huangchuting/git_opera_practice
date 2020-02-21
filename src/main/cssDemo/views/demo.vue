@@ -155,8 +155,9 @@
             </div>
         </div>
         <div class="demo">
-            <h5>11.</h5>
+            <h5>11.内发光</h5>
             <div class="demo-11">
+                <div class="loading"></div>
             </div>
         </div>
     </div>
@@ -1089,5 +1090,41 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         }
     }
 }
+.demo-11{
+    .loading {
+        position: relative;
+        width: 8em;
+        height: 8em;
+        background: black;
+        border-radius: 50%;
+        box-shadow: inset 0.5em -0.5em crimson;
+        animation: spin 2s linear infinite;
 
+        &:before,
+        &:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            box-shadow: inherit;
+        }
+
+        &:before {
+            filter: blur(5px);
+        }
+
+        &:after {
+            filter: blur(10px);
+        }
+    }
+
+    @keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+    }
+
+}
 </style>
