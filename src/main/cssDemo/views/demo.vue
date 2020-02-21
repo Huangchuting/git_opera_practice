@@ -311,6 +311,8 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         display: flex;
         flex-wrap: wrap;
         line-height: 1.8;
+        font-size: 2em;
+        font-family: Lora, serif;
         color: white;
         white-space: pre;
         span{
@@ -335,6 +337,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Raleway, sans-serif;
     text-align: center;
     .reveal{
         position: relative;
@@ -403,6 +406,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         position: relative;
         padding: 1rem 3rem;
         font-size: 1rem;
+        font-family: Lato, serif;
         line-height: 1.5;
         color: white;
         text-decoration: none;
@@ -581,6 +585,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         position: relative;
         padding: 1rem 3rem;
         font-size: 1rem;
+        font-family: Lato, serif;
         line-height: 1.5;
         color: white;
         text-decoration: none;
@@ -787,6 +792,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             margin: 0;
             font-size: 32px;
             line-height: 30px;
+            font-family: Lora, serif;
 
             &::before {
                 background: #FF4081;
@@ -796,6 +802,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         .subtitle {
             margin: 10px 0 0 0;
             font-size: 12px;
+            font-family: Lato, sans-serif;
             line-height: 30px;
             letter-spacing: 5px;
             text-transform: uppercase;
@@ -821,6 +828,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             text-decoration: none;
             overflow: hidden;
             text-align: center;
+            font-family: Lato, sans-serif;
 
             span {
                 position: relative;
@@ -860,6 +868,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         user-select: none;
         white-space: nowrap;
         transition: 0.25s;
+        font-family: Lato, sans-serif;
 
         &:hover {
             background: hsl($hue, 100%, 31%);
@@ -997,6 +1006,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
         $navtab-item-width: $navtab-width / 4 - 20px;
         $navtab-overlay-width: $navtab-item-width + 80px;
         $active-index: 0;
+        font-family: Lato, sans-serif;
 
         position: relative;
         width: $navtab-width;
@@ -1168,6 +1178,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
 
 }
 .demo-12{
+    font-family: Lora, serif;
     h1{
         text-align: center;
     }
@@ -1199,6 +1210,7 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
     .neon {
         color: #cce7f8;
         font-size: 2.5rem;
+        font-family: 'Pacifico', cursive;
         text-transform: uppercase;
         animation: shining 0.1s alternate infinite;
     }
