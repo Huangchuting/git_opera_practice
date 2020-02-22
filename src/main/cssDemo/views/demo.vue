@@ -233,7 +233,7 @@
             </div>
         </div>
         <div class="demo">
-            <h5>19.clip-path</h5>
+            <h5>20.clip-path</h5>
             <div class="demo-20">
                 <div class="shadow">
                     <div class="card">
@@ -253,6 +253,37 @@
                                     <dd>(+86)13063509980</dd>
                                 </span>
                         </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="demo">
+            <h5>21.-webkit-box-reflect</h5>
+            <div class="demo-21">
+                <div class="scene">
+                    <div class="card" @click="turnCard(1)" :style="{transform: turnAround === 1 ? 'rotateY(.5turn)': ''}">
+                        <div class="card__face card__face--front">
+                        <img src="../../../assets/images/cnKl1Ykd5rZCVwm.jpg" />
+                        </div>
+                        <div class="card__face card__face--back">
+                        <img src="../../../assets/images/cqyJiYlRwnTeHmj.jpg" />
+                        </div>
+                    </div>
+                    <div class="card" @click="turnCard(2)" :style="{transform: turnAround === 2 ? 'rotateY(.5turn)': ''}">
+                        <div class="card__face card__face--front">
+                        <img src="../../../assets/images/FLnzi5Kq4tkRZSm.webp" />
+                        </div>
+                        <div class="card__face card__face--back">
+                        <img src="../../../assets/images/buDT4YS6zUMfHst.jpg" />
+                        </div>
+                    </div>
+                    <div class="card" @click="turnCard(3)" :style="{transform: turnAround === 3 ? 'rotateY(.5turn)': ''}">
+                        <div class="card__face card__face--front">
+                        <img src="../../../assets/images/uXF1Kx7lzELB6wf.jpg" />
+                        </div>
+                        <div class="card__face card__face--back">
+                        <img src="../../../assets/images/RtVq2wxQYySDb8L.jpg" />
                         </div>
                     </div>
                 </div>
@@ -294,7 +325,8 @@ export default {
             pagination: [1, 2, 3, 4, 5],
             lightTextTit: 'Hello World',
             lightTextDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.',
-            loading: 'Loading'
+            loading: 'Loading',
+            turnAround: 0
         }
     },
     mounted () {
@@ -317,6 +349,9 @@ export default {
                 if (this.currentPage === this.pagination[this.pagination.length - 1]) return
                 this.currentPage += 1
             }
+        },
+        turnCard(num) {
+            this.turnAround = num
         }
     }
 }
@@ -1710,6 +1745,55 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
             span {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+    }
+}
+.demo-21{
+    margin: 80px 0;
+    .scene {
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        -webkit-perspective: 800px;
+        perspective: 800px;
+
+        .card {
+            position: relative;
+            width: 240px;
+            height: 300px;
+            color: white;
+            cursor: pointer;
+            transition: 1s ease-in-out;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            // transform: rotateY(90deg);
+            
+
+            &:active {
+                transform: rotateY(0.5turn);
+            }
+
+            .card__face {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                // transition: 1s ease-in-out;
+                -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+
+                img {
+                    width: 240px;
+                    height: 300px;
+                    object-fit: cover;
+                }
+
+                &--back {
+                    transform: rotateY(0.5turn);
+                }
             }
         }
     }
