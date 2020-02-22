@@ -289,6 +289,20 @@
                 </div>
             </div>
         </div>
+        <div class="demo">
+            <h5>22.web animations</h5>
+            <div class="demo-22">
+                <ul class="menu-hover-image">
+                    <li class="menu-item" v-for="item in webAnimations" :key='item.tit' >
+                        <div @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+                            <h1>{{item.tit}}</h1>
+                            <span>{{item.desc}}</span>
+                        </div>
+                    </li>
+                    <div class="cursor" ref="cursor"></div>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -326,7 +340,26 @@ export default {
             lightTextTit: 'Hello World',
             lightTextDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.',
             loading: 'Loading',
-            turnAround: 0
+            turnAround: 0,
+            webAnimations: [
+                {
+                    tit: 'Home',
+                    desc: 'alphardex'
+                },
+                {
+                    tit: 'Projects',
+                    desc: 'CSS Creations'
+                },
+                {
+                    tit: 'Blogs',
+                    desc: 'Memories'
+                },
+                {
+                    tit: 'About',
+                    desc: 'CSS Wizard'
+                }
+                
+            ]
         }
     },
     mounted () {
@@ -352,6 +385,18 @@ export default {
         },
         turnCard(num) {
             this.turnAround = num
+        },
+        mouseEnter(e) {
+            let [x, y] = [e.layerX, e.layerY]
+            this.$refs.cursor.style.opacity = 1
+            this.$refs.cursor.style.transform = `translate(${x}px, ${y}px) scale(1)`
+            
+        },
+        mouseLeave(e) {
+            let [x, y] = [e.layerX, e.layerY]
+            
+            this.$refs.cursor.style.transform = `scale(0)`
+            this.$refs.cursor.style.opacity = 0
         }
     }
 }
@@ -1794,6 +1839,57 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
                 &--back {
                     transform: rotateY(0.5turn);
                 }
+            }
+        }
+    }
+}
+.demo-22{
+    margin: 80px 0;
+    .menu-hover-image {
+        position: relative;
+        width: 56rem;
+        margin-bottom: 12rem;
+        font-family: Lora, serif;
+        list-style-type: none;
+
+        .cursor {
+            position: absolute;
+            top: -50%;
+            left: -25%;
+            z-index: -1;
+            width: 600px;
+            height: 400px;
+            background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            background-position: 50% 50%;
+            background-size: cover;
+            transition: all .2s;
+            transform:scale(0);
+            opacity: 0;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            $menu-image-urls: url('../../../assets/images/buDT4YS6zUMfHst.jpg'),
+            url('../../../assets/images/uXF1Kx7lzELB6wf.jpg'),
+            url('../../../assets/images/cnKl1Ykd5rZCVwm.jpg'),
+            url('../../../assets/images/RtVq2wxQYySDb8L.jpg');
+
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}):hover~.cursor {
+                    background-image: nth($menu-image-urls, $i);
+                }
+            }
+
+            > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                text-decoration: none;
+                color: white;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                mix-blend-mode: difference;
+                transform: translate3d(0, 0, 0);  // just make "mix-blend-mode" work properly.
             }
         }
     }
