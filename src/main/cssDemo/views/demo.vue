@@ -318,6 +318,16 @@
                 </div>
             </div>
         </div>
+        <div class="demo">
+            <h5>Shinchou Menu</h5>
+            <div class="demo-24">
+                <ul class="shinchou-menu">
+                    <li v-for="(list , index) in ShinchouMenu" :key="index">
+                        <span v-for="(a, i) in list.split('')" :key="i" :class="[i === 0 || i === 1 ? 'highlight' : '']" :style="{transitionDelay: `${i / 5}s`}">{{a}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -374,7 +384,8 @@ export default {
                     desc: 'CSS Wizard'
                 }
                 
-            ]
+            ],
+            ShinchouMenu: ['ニュース','ストーリー','スターフ＆キャスト','キャラクター','放送·配信情報']
         }
     },
     mounted () {
@@ -1933,62 +1944,114 @@ h5{color: #fff;font-size: 20px;margin: 30px 0 10px;}
 }
 .demo-23{
     .mawaru {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-  .circle {
-    // https://coolors.co
-    $circle-colors: #50514F,
-      #F25F5C,
-      #FFE066,
-      #247BA0,
-      #70C1B3,
-      #1D3557,
-      #88ABC0,
-      #FFCDB2;
+        .circle {
+            // https://coolors.co
+            $circle-colors: #50514F, #F25F5C, #FFE066, #247BA0, #70C1B3, #1D3557, #88ABC0, #FFCDB2;
 
-    position: absolute;
-    background: conic-gradient(var(--color1) var(--pos), var(--color2) 0);
-    border-radius: 50%;
+            position: absolute;
+            background: conic-gradient(var(--color1) var(--pos), var(--color2) 0);
+            border-radius: 50%;
 
-    @for $i from 1 through 8 {
-      &:nth-child(#{$i}) {
-        $color1: nth($circle-colors, $i);
-        --color1: #{$color1};
+            @for $i from 1 through 8 {
+                &:nth-child(#{$i}) {
+                    $color1: nth($circle-colors, $i);
+                    --color1: #{$color1};
 
-        z-index: 8 - $i;
-        width: 4em * $i;
-        height: 4em * $i;
-        // Use step-end to switch color1 and color2 every time the first pos animation finished.
-        animation: pos 0.6s linear,
-        color1 1.2s step-end,
-        color2-#{$i} 1.2s step-end;
-        animation-iteration-count: 2;
-        animation-delay: 0.4s * $i;
-      }
+                    z-index: 8 - $i;
+                    width: 4em * $i;
+                    height: 4em * $i;
+                    // Use step-end to switch color1 and color2 every time the first pos animation finished.
+                    animation: pos 0.6s linear, color1 1.2s step-end, color2-#{$i} 1.2s step-end;
+                    animation-iteration-count: 2;
+                    animation-delay: 0.4s * $i;
+                }
 
-      @keyframes color2-#{$i} {
-        50% {
-          --color2: #{nth($circle-colors, $i)};
+                @keyframes color2-#{$i} {
+                    50% {
+                    --color2: #{nth($circle-colors, $i)};
+                    }
+                }
+            }
         }
-      }
     }
-  }
-}
     @keyframes pos {
-  to {
-    --pos: 100%;
-  }
-}
+        to {
+            --pos: 100%;
+        }
+    }
 
-@keyframes color1 {
-  50% {
-    --color1: transparent;
-  }
+    @keyframes color1 {
+        50% {
+            --color1: transparent;
+        }
+    }
 }
+.demo-24{
+    .shinchou-menu {
+        $highlight-text-color: #00ACF0;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+
+        li {
+            margin: 6px;
+
+            position: relative;
+            display: inline-flex;
+            padding: 6px 2px 6px 2px;
+            color: black;
+            font-size: 1.6em;
+            font-weight: 700;
+            line-height: 1; // ensure span is a square
+            text-decoration: none;
+            overflow: hidden;
+
+            &:before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                z-index: -2;
+                width: 100%;
+                height: 100%;
+                background: black;
+            }
+
+            &:hover {
+                span {
+                    color: white !important;
+                    text-shadow: 0 0 10px $highlight-text-color;
+                }
+            }
+
+            span {
+                position: relative;
+                margin: 0 5px 0 4px;
+                transition: 0.3s;
+
+                &.highlight:before {
+                    position: absolute;
+                    content: '';
+                    top: -3px;
+                    left: -3px;
+                    bottom: -3px;
+                    right: -3px;
+                    z-index: -1;
+                    background: $highlight-text-color;
+                }
+
+                &:not(.highlight) {
+                    color: $highlight-text-color;
+                }
+            }
+        }
+        }
 }
 </style>
