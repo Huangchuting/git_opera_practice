@@ -22,6 +22,7 @@ import Shadow from '../main/cssDemo/views/shadow.vue'
 import Dialog from '../main/cssDemo/views/dialog.vue'
 import SelfDemo from '../main/cssDemo/views/selfDemo.vue'
 import Gradient from '../main/cssDemo/views/gradient.vue'
+import ClipPath from '../main/cssDemo/views/clipPath.vue'
 
 let routes = [
     {
@@ -90,6 +91,10 @@ let routes = [
             {
                 path: 'gradient',
                 component: Gradient
+            },
+            {
+                path: 'clipPath',
+                component: ClipPath
             }
         ],
         redirect: 'cssdemo/textGradient'
