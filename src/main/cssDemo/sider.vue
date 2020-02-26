@@ -6,6 +6,7 @@
         <router-link tag="li" to='/cssdemo/shadow'>遮罩</router-link>
         <router-link tag="li" to='/cssdemo/dialog'>弹窗</router-link>
         <router-link tag="li" to='/cssdemo/selfDemo'>self-demo</router-link>
+        <router-link tag="li" to='/cssdemo/gradient'>渐变</router-link>
     </ul>
 </template>
 <script>
