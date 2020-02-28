@@ -24,6 +24,8 @@ import SelfDemo from '../main/cssDemo/views/selfDemo.vue'
 import Gradient from '../main/cssDemo/views/gradient.vue'
 import ClipPath from '../main/cssDemo/views/clipPath.vue'
 
+import Canvas from '../main/canvas/canvas.vue'
+
 let routes = [
     {
         path: '/', 
@@ -98,6 +100,10 @@ let routes = [
             }
         ],
         redirect: 'cssdemo/textGradient'
+    },
+    {
+        path: '/canvas',
+        component: Canvas
     }
     
 ]

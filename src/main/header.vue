@@ -6,6 +6,7 @@
             <router-link tag="li" to="/form">表单</router-link>
             <router-link tag="li" to="/excel">excel</router-link>
             <router-link tag="li" to="/cssdemo">CSS</router-link>
+            <router-link tag="li" to="/canvas">canvas</router-link>
         </ul>
     </header>
 </template>
