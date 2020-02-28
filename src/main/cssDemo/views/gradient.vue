@@ -20,6 +20,9 @@
         <div class="demo-c6 inline-demo">clip-path</div>
         <!-- <div>将来还有corner-shape</div> -->
         <hr/>
+        <div class="demo-d1 inline-demo"></div>
+        <div class="demo-d2 inline-demo"></div>
+        <hr/>
         <div class="demo-100"></div>
     </div>
 </template>
@@ -117,8 +120,19 @@
     );
     // clip-path: polygon( 20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px );
 }
-
-
+.demo-d1{
+    background: radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, #613 10px, rgba(96, 16, 48, 0) 11px) 0px 10px,
+        radial-gradient(at 100% 100%,rgba(96, 16, 48, 0) 9px, #613 10px, rgba(96, 16, 48, 0) 11px),#8a3;
+    background-size: 20px 20px;
+    // background-repeat: no-repeat;
+}
+.demo-d2{
+    background:linear-gradient(63deg, #999 23%, transparent 23%) 7px 0,
+        linear-gradient(63deg, transparent 74%, #999 78%),
+        linear-gradient(63deg, transparent 34%, #999 38%, #999 58%, transparent 62%),#444;
+    background-size: 16px 48px;
+    // background-repeat: no-repeat;
+}
 .demo-100{
     height: 199px;
     background-image: linear-gradient(to right, transparent 0%, transparent 50%, #999 50%, #999 100%),
