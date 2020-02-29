@@ -52,7 +52,7 @@ export default function init () {
         var sec = now.getSeconds()
         var min = now.getMinutes()
         var hour = now.getHours()
-        hour = hour >= 12 ? hour - 12 : hr
+        hour = hour >= 12 ? hour - 12 : hour
 
         ctx.fillStyle = 'black'
 
