@@ -26,6 +26,8 @@ import ClipPath from '../main/cssDemo/views/clipPath.vue'
 
 import Canvas from '../main/canvas/canvas.vue'
 
+import SvgDemo from '../main/svgDemo/svgDemo.vue'
+
 let routes = [
     {
         path: '/', 
@@ -104,6 +106,10 @@ let routes = [
     {
         path: '/canvas',
         component: Canvas
+    },
+    {
+        path: '/svgDemo',
+        component: SvgDemo
     }
     
 ]

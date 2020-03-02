@@ -7,6 +7,7 @@
             <router-link tag="li" to="/excel">excel</router-link>
             <router-link tag="li" to="/cssdemo">CSS</router-link>
             <router-link tag="li" to="/canvas">canvas</router-link>
+            <router-link tag="li" to="/svgDemo">svg</router-link>
         </ul>
     </header>
 </template>
