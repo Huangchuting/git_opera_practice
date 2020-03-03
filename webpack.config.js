@@ -27,6 +27,19 @@ module.exports = {
     module: { // 用于配置第三方模块加载器
         rules: [ // 所有第三方模块的匹配规则
             {
+                test: require.resolve('jquery'),
+                use: [
+                    {
+                        loader: 'expose-loader',
+                        options: 'jquery'
+                    },
+                    {
+                        loader: 'expose-loader',
+                        options: '$'
+                    }
+                ]
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 exclude: /node_modules/

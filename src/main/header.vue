@@ -8,6 +8,7 @@
             <router-link tag="li" to="/cssdemo">CSS</router-link>
             <router-link tag="li" to="/canvas">canvas</router-link>
             <router-link tag="li" to="/svgDemo">svg</router-link>
+            <router-link tag="li" to="/jsDemo">js</router-link>
         </ul>
     </header>
 </template>

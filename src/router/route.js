@@ -28,6 +28,9 @@ import Canvas from '../main/canvas/canvas.vue'
 
 import SvgDemo from '../main/svgDemo/svgDemo.vue'
 
+import JSDemo from '../main/jsDemo/jsDemo.vue'
+import StarRating from '../main/jsDemo/view/starRating.vue'
+
 let routes = [
     {
         path: '/', 
@@ -110,6 +113,17 @@ let routes = [
     {
         path: '/svgDemo',
         component: SvgDemo
+    },
+    {
+        path: '/jsDemo',
+        component: JSDemo,
+        children: [
+            {
+                path: 'starRating',
+                component: StarRating
+            }
+        ],
+        redirect: 'jsDemo/starRating'
     }
     
 ]
