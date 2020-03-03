@@ -2,12 +2,7 @@
     <div class="canvas-wrp"></div>
 </template>
 <script>
-// import RotateSun from './js/rotateSun'
-// import Clock from './js/clock'
-// import LoopPanorama from './js/loopPanorama'
-// import Ball from './js/ball'
-// import Demo from './js/demo'
-import SwingBall from './js/swingBall'
+import Init from './js/init'
 export default {
     data () {
         return {
@@ -15,11 +10,7 @@ export default {
         }
     },
     mounted () {
-        // RotateSun()
-        // Clock()
-        // LoopPanorama()
-        // Demo()
-        SwingBall()
+        Init()
     }
 }
 </script>
