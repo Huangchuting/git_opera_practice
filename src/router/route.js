@@ -23,6 +23,7 @@ import Dialog from '../main/cssDemo/views/dialog.vue'
 import SelfDemo from '../main/cssDemo/views/selfDemo.vue'
 import Gradient from '../main/cssDemo/views/gradient.vue'
 import ClipPath from '../main/cssDemo/views/clipPath.vue'
+import Transition from '../main/cssDemo/views/transition.vue'
 
 import Canvas from '../main/canvas/canvas.vue'
 
@@ -102,6 +103,10 @@ let routes = [
             {
                 path: 'clipPath',
                 component: ClipPath
+            },
+            {
+                path: 'transition',
+                component: Transition
             }
         ],
         redirect: 'cssdemo/textGradient'
