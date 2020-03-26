@@ -37,6 +37,26 @@
             <dl>
                 <dt class="title"></dt>
                 <dt class="text">
+                    <el-upload
+                        class="upload-demo"
+                        action="https://jsonplaceholder.typicode.com/posts/"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-upload="beforeUpload"
+                        multiple
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                        :file-list="fileList">
+                        <el-button size="small" type="primary">点击上传</el-button>
+                    </el-upload>
+                </dt>
+            </dl>
+        </li>
+        <li></li>
+        <li>
+            <dl>
+                <dt class="title"></dt>
+                <dt class="text">
                     <el-button>提交</el-button>
                 </dt>
             </dl>
@@ -45,6 +65,7 @@
 </div>
 </template>
 <script>
+import api from '../../api/api.js';
 export default {
     data () {
         return {
@@ -52,12 +73,48 @@ export default {
             Password: '',
             name: '',
             phone: '',
-            desc: ''
+            desc: '',
+            fileList: []
         }
     },
     created () {
     },
     computed: {
+    },
+    methods: {
+        handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePreview(file) {
+            console.log(file);
+        },
+        handleExceed(files, fileList) {
+            this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+        },
+        async beforeUpload(file, fileList) {
+            let isUpload
+            isUpload = await api.fileIsExits().then(res => {
+                return res.data
+            }).then(flag => {
+                if (flag) {
+                    return this.$confirm('此文件已存在, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    })
+                } else {
+                    return new Promise((resolve, reject) => {
+                        resolve()
+                    })
+                }
+            }).catch(() => {
+                return new Promise((resolve, reject) => {
+                        reject()
+                })
+            })
+            console.log('isUpload', isUpload)
+            return isUpload
+        }
     }
 }
 </script>

@@ -6,13 +6,14 @@ Vue.use(VueRouter)
 import Home from '../main/home/home.vue'
 
 import About from '../main/about/about.vue'
-import Slider from '../main/about/view/Slider.vue'
-import MyTable from '../main/about/view/Table.vue'
-import AnotherTable from '../main/about/view/anotherTable.vue'
+import Slider from '../main/about/views/Slider.vue'
+import MyTable from '../main/about/views/Table.vue'
+import AnotherTable from '../main/about/views/anotherTable.vue'
+import CompDemo from '../main/about/views/compDemo.vue'
 
 import Form from '../main/form/form.vue'
 
-import Excel from '../main/excel/view/excel.vue'
+import Excel from '../main/excel/views/excel.vue'
 
 import CSSDemo from '../main/cssDemo/cssDemo.vue'
 import TextGradient from '../main/cssDemo/views/textGradient.vue'
@@ -30,7 +31,8 @@ import Canvas from '../main/canvas/canvas.vue'
 import SvgDemo from '../main/svgDemo/svgDemo.vue'
 
 import JSDemo from '../main/jsDemo/jsDemo.vue'
-import StarRating from '../main/jsDemo/view/starRating.vue'
+import StarRating from '../main/jsDemo/views/starRating.vue'
+import Practise from '../main/jsDemo/views/practise.vue'
 
 let routes = [
     {
@@ -56,6 +58,10 @@ let routes = [
             {
                 path: 'anotherTable',
                 component: AnotherTable
+            },
+            {
+                path: 'compDemo',
+                component: CompDemo
             }
         ],
         redirect: 'about/myTable'
@@ -126,6 +132,10 @@ let routes = [
             {
                 path: 'starRating',
                 component: StarRating
+            },
+            {
+                path: 'practise',
+                component: Practise
             }
         ],
         redirect: 'jsDemo/starRating'

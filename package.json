@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Huangchuting/git_opera_practice#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "cookie-parser": "^1.4.5",
     "element-ui": "^2.2.2",
     "jquery": "^3.4.1",
     "vee-validate": "^2.0.0-rc.25",

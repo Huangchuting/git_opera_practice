@@ -146,3 +146,18 @@ let filterData = {
     value: ''
 }
 Mock.mock(/(\/filterData)/, 'post', filterData)
+
+let todoItemData = {
+    'data|3-6': [
+        {
+            title: '@cname',
+            'del|1': true
+        }
+    ]
+}
+Mock.mock(/(\/todoItem)/, 'post', todoItemData)
+
+let fileIsExist = {
+    'data|1': true
+}
+Mock.mock(/(\/fileIsExist)/, 'post', fileIsExist)

@@ -9,6 +9,7 @@ require('jquery')
 // import va from './plugins/va'
 // import './plugins/validate'
 import './directive/directive'
+import './components/todoItem'
 import Toast from './plugins/toast'
 import './assets/css/index.css'
 import './assets/fonts/iconfont.css'
@@ -16,6 +17,7 @@ import './assets/fonts/webfonts/webfonts.css'
 
 require('./mock/mock.js')
 
+Vue.prototype.log = console.log.bind(console)
 
 
 Vue.use(ElementUI)

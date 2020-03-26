@@ -38,10 +38,23 @@ export default {
         }).catch(error => {
             console.log(error)
         })
-    }
-    ,
+    },
     getFieldFilterData () {
         return axios.post('/filterData').then(res => {
+            return res.data
+        }).catch(error => {
+            console.log(error)
+        })
+    },
+    getTodoItemData () {
+        return axios.post('/todoItem').then(res => {
+            return res.data
+        }).catch(error => {
+            console.log(error)
+        })
+    },
+    fileIsExits () {
+        return axios.post('/fileIsExist').then(res => {
             return res.data
         }).catch(error => {
             console.log(error)
