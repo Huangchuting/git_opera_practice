@@ -25,6 +25,7 @@ import SelfDemo from '../main/cssDemo/views/selfDemo.vue'
 import Gradient from '../main/cssDemo/views/gradient.vue'
 import ClipPath from '../main/cssDemo/views/clipPath.vue'
 import Transition from '../main/cssDemo/views/transition.vue'
+import Grid from '../main/cssDemo/views/grid.vue'
 
 import Canvas from '../main/canvas/canvas.vue'
 
@@ -33,6 +34,9 @@ import SvgDemo from '../main/svgDemo/svgDemo.vue'
 import JSDemo from '../main/jsDemo/jsDemo.vue'
 import StarRating from '../main/jsDemo/views/starRating.vue'
 import Practise from '../main/jsDemo/views/practise.vue'
+
+import EchartsDemo from '../main/echarts/echartsDemo.vue'
+import RelationEcharts from '../main/echarts/views/relationEcharts'
 
 let routes = [
     {
@@ -113,6 +117,10 @@ let routes = [
             {
                 path: 'transition',
                 component: Transition
+            },
+            {
+                path: 'grid',
+                component: Grid
             }
         ],
         redirect: 'cssdemo/textGradient'
@@ -139,8 +147,18 @@ let routes = [
             }
         ],
         redirect: 'jsDemo/starRating'
+    },
+    {
+        path: '/echarts',
+        component: EchartsDemo,
+        children: [
+            {
+                path: 'relationEcharts',
+                component: RelationEcharts
+            }
+        ],
+        redirect: 'echarts/relationEcharts'
     }
-    
 ]
 
 var router = new VueRouter({

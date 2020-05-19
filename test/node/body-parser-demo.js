@@ -1,7 +1,7 @@
 const express = require('express')
 var bodyParser = require('body-parser')
 
-const port = 3000
+const port = 3001
 var app = express()
 
 var jsonParser = bodyParser.json()
@@ -22,7 +22,7 @@ app.post('/login', urlencodedParser, (req, res) => {
 app.post('/api', jsonParser, (req, res) => {
     console.log('******************')
     console.log(req.body)
-    res.send('welcome, ' + req.body.name)
+    res.send('welcome, ' + req.body.name + ' ' + req.body.age)
     res.end()
 })
 

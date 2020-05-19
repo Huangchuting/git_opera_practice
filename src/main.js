@@ -10,6 +10,7 @@ require('jquery')
 // import './plugins/validate'
 import './directive/directive'
 import './components/todoItem'
+import Echarts from 'echarts'
 import Toast from './plugins/toast'
 import './assets/css/index.css'
 import './assets/fonts/iconfont.css'
@@ -22,6 +23,8 @@ Vue.prototype.log = console.log.bind(console)
 
 Vue.use(ElementUI)
 Vue.use(Toast)
+
+Vue.prototype.$echarts = Echarts
 new Vue({
     el: '#appIndex',
     router,

@@ -85,7 +85,7 @@ export default {
                         editCells.push(item.prop)
                     }
                 })
-                 for (let i = 0; i < res.data.length; i++) {
+                for (let i = 0; i < res.data.length; i++) {
                     for (let j = 0; j < editCells.length; j++) {
                         let key = editCells[j] + 'edit'
                         res.data[i][key] = false

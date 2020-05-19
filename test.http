@@ -1,0 +1,17 @@
+###
+GET http://127.0.0.1:3001/none
+
+### 
+POST http://127.0.0.1:3001/api
+Content-Type: application/json
+
+{
+    name = "hct"
+}
+
+### 
+POST http://127.0.0.1:3001/login
+Content-Type: application/x-www-form-urlencoded
+
+name=hct
+&age=28

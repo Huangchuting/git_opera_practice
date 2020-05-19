@@ -9,6 +9,7 @@
         <router-link tag="li" to='/cssdemo/gradient'>渐变</router-link>
         <router-link tag="li" to='/cssdemo/clipPath'>clip-path</router-link>
         <router-link tag="li" to='/cssdemo/transition'>transition</router-link>
+        <router-link tag="li" to='/cssdemo/grid'>Grid</router-link>
     </ul>
 </template>
 <script>
