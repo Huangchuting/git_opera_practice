@@ -4,6 +4,7 @@
         <router-link tag="li" to='/about/myTable'>表格组件</router-link>
         <router-link tag="li" to='/about/anotherTable'>另一个表格组件</router-link>
         <router-link tag="li" to='/about/compDemo'>自定义组件</router-link>
+        <router-link tag="li" to='/about/videoDemo'>视频组件</router-link>
     </ul>
 </template>
 <script>

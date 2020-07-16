@@ -10,6 +10,7 @@ import Slider from '../main/about/views/Slider.vue'
 import MyTable from '../main/about/views/Table.vue'
 import AnotherTable from '../main/about/views/anotherTable.vue'
 import CompDemo from '../main/about/views/compDemo.vue'
+import VideoDemo from '../main/about/views/videoDemo.vue'
 
 import Form from '../main/form/form.vue'
 
@@ -66,6 +67,10 @@ let routes = [
             {
                 path: 'compDemo',
                 component: CompDemo
+            },
+            {
+                path: 'videoDemo',
+                component: VideoDemo
             }
         ],
         redirect: 'about/myTable'
